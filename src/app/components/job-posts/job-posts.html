@@ -1,37 +1,39 @@
-<div class="max-w-4xl mx-auto px-6 py-8">
+<div class="max-w-4xl mx-auto px-4 sm:px-6 py-4 sm:py-8">
   <!-- Header -->
-  <div class="mb-8 flex justify-between items-center">
-    <div>
-      <h1 class="text-3xl font-bold text-gray-900 mb-2 flex items-center gap-2">
-        Project Opportunities
-      </h1>
-      <p class="text-gray-600">Complete solutions needed by small and medium enterprises</p>
+  <div class="mb-6 sm:mb-8">
+    <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-4">
+      <div>
+        <h1 class="text-2xl sm:text-3xl font-bold text-gray-900 mb-2">
+          Project Opportunities
+        </h1>
+        <p class="text-gray-600 text-sm sm:text-base">Complete solutions needed by small and medium enterprises</p>
+      </div>
+      <button (click)="createJob()" class="w-full sm:w-auto bg-blue-600 text-white px-4 sm:px-6 py-3 rounded-md hover:bg-blue-700 transition-colors text-sm sm:text-base">
+        Post a Job
+      </button>
     </div>
-    <button (click)="createJob()" class="bg-blue-600 text-white px-6 py-3 rounded-md hover:bg-blue-700 transition-colors">
-      Post a Job
-    </button>
   </div>
 
   <!-- Job Posts List -->
-  <div class="space-y-4">
-    <div *ngFor="let job of jobs" class="bg-white border border-gray-200 rounded-lg p-6 hover:shadow-md transition-shadow cursor-pointer" (click)="viewJob(job.id)">
+  <div class="space-y-3 sm:space-y-4">
+    <div *ngFor="let job of jobs" class="bg-white border border-gray-200 rounded-lg p-4 sm:p-6 hover:shadow-md transition-shadow cursor-pointer" (click)="viewJob(job.id)">
       <!-- Job Header -->
-      <div class="flex justify-between items-start mb-4">
-        <div>
-          <h3 class="text-xl font-semibold text-gray-900 mb-1">{{job.title}}</h3>
-          <p class="text-gray-600">{{job.company}} • {{job.location}}</p>
+      <div class="flex flex-col sm:flex-row sm:justify-between sm:items-start mb-3 sm:mb-4">
+        <div class="mb-2 sm:mb-0">
+          <h3 class="text-lg sm:text-xl font-semibold text-gray-900 mb-1">{{job.title}}</h3>
+          <p class="text-gray-600 text-sm sm:text-base">{{job.company}} • {{job.location}}</p>
         </div>
-        <span class="text-sm text-gray-500">{{job.posted}}</span>
+        <span class="text-xs sm:text-sm text-gray-500">{{job.posted}}</span>
       </div>
 
       <!-- Job Details -->
-      <div class="flex flex-wrap gap-4 mb-4 text-sm">
+      <div class="flex flex-wrap gap-3 sm:gap-4 mb-3 sm:mb-4 text-xs sm:text-sm">
         <span class="text-green-600 font-medium">{{job.budget}}</span>
         <span class="text-gray-600">{{job.type}}</span>
       </div>
 
       <!-- Tech Stack -->
-      <div class="flex flex-wrap gap-2">
+      <div class="flex flex-wrap gap-1 sm:gap-2">
         <span *ngFor="let tech of job.stack" class="px-2 py-1 bg-gray-100 text-gray-700 text-xs rounded-full">
           {{tech}}
         </span>
