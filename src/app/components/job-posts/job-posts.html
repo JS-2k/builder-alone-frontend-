@@ -1,0 +1,34 @@
+<div class="max-w-4xl mx-auto px-6 py-8">
+  <!-- Header -->
+  <div class="mb-8">
+    <h1 class="text-3xl font-bold text-gray-900 mb-2">SME Project Opportunities</h1>
+    <p class="text-gray-600">Complete solutions needed by small and medium enterprises</p>
+  </div>
+
+  <!-- Job Posts List -->
+  <div class="space-y-4">
+    <div *ngFor="let job of jobs" class="bg-white border border-gray-200 rounded-lg p-6 hover:shadow-md transition-shadow cursor-pointer" (click)="viewJob(job.id)">
+      <!-- Job Header -->
+      <div class="flex justify-between items-start mb-4">
+        <div>
+          <h3 class="text-xl font-semibold text-gray-900 mb-1">{{job.title}}</h3>
+          <p class="text-gray-600">{{job.company}} • {{job.location}}</p>
+        </div>
+        <span class="text-sm text-gray-500">{{job.posted}}</span>
+      </div>
+
+      <!-- Job Details -->
+      <div class="flex flex-wrap gap-4 mb-4 text-sm">
+        <span class="text-green-600 font-medium">{{job.budget}}</span>
+        <span class="text-gray-600">{{job.type}}</span>
+      </div>
+
+      <!-- Tech Stack -->
+      <div class="flex flex-wrap gap-2">
+        <span *ngFor="let tech of job.stack" class="px-2 py-1 bg-gray-100 text-gray-700 text-xs rounded-full">
+          {{tech}}
+        </span>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,51 @@
+<div class="max-w-6xl mx-auto px-6 py-8">
+  <!-- Hero Section -->
+  <div class="text-center mb-12">
+    <h1 class="text-4xl font-bold text-gray-900 mb-4">Full Stack Developers for SMEs</h1>
+    <p class="text-xl text-gray-600">Complete solutions. One developer. Direct contact.</p>
+  </div>
+
+  <!-- Developer Profiles Grid -->
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+    <div *ngFor="let dev of developers" class="bg-white rounded-lg border border-gray-200 p-6 hover:shadow-lg transition-shadow">
+      <!-- Avatar & Name -->
+      <div class="flex items-center mb-4">
+        <img [src]="dev.avatar" [alt]="dev.name" class="w-12 h-12 rounded-full mr-4">
+        <div>
+          <h3 class="font-semibold text-gray-900">{{dev.name}}</h3>
+          <p class="text-gray-600 text-sm">{{dev.role}}</p>
+        </div>
+      </div>
+
+      <!-- Stack Tags -->
+      <div class="mb-4">
+        <div class="flex flex-wrap gap-2">
+          <span *ngFor="let tech of dev.stack" class="px-2 py-1 bg-blue-100 text-blue-800 text-xs rounded-full">
+            {{tech}}
+          </span>
+        </div>
+      </div>
+
+      <!-- Experience & Availability -->
+      <div class="mb-4 space-y-2">
+        <div class="flex justify-between text-sm">
+          <span class="text-gray-500">Specialty:</span>
+          <span class="text-gray-900">{{dev.specialty}}</span>
+        </div>
+        <div class="flex justify-between text-sm">
+          <span class="text-gray-500">Experience:</span>
+          <span class="text-gray-900">{{dev.experience}}</span>
+        </div>
+        <div class="flex justify-between text-sm">
+          <span class="text-gray-500">Status:</span>
+          <span class="text-green-600 font-medium">{{dev.availability}}</span>
+        </div>
+      </div>
+
+      <!-- CTA Button -->
+      <button (click)="viewProfile(dev.id)" class="w-full cursor-pointer bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 transition-colors">
+        Hire
+      </button>
+    </div>
+  </div>
+</div>
