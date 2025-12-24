@@ -1,0 +1,35 @@
+/* Clean textarea styling */
+textarea {
+  font-family: inherit;
+  line-height: 1.5;
+}
+
+textarea:focus {
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+/* Placeholder styling */
+input::placeholder,
+textarea::placeholder {
+  color: #9ca3af;
+  opacity: 0.8;
+  font-style: italic;
+}
+
+input:focus::placeholder,
+textarea:focus::placeholder {
+  opacity: 0.6;
+}
+
+/* Input styling */
+input,
+textarea,
+select {
+  color: #374151;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  color: #111827;
+}

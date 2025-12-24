@@ -50,4 +50,8 @@ export class JobPosts {
   viewJob(jobId: number) {
     this.router.navigate(['/job', jobId]);
   }
+
+  createJob() {
+    this.router.navigate(['/create-job']);
+  }
 }

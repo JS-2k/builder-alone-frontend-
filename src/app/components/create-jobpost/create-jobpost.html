@@ -1,0 +1,144 @@
+<div class="max-w-4xl mx-auto px-6 py-8">
+  <!-- Back Button -->
+  <button (click)="goBack()" class="flex items-center text-gray-600 hover:text-gray-900 mb-6">
+    <i class="pi pi-arrow-left mr-2"></i>
+    Back to Projects
+  </button>
+
+  <!-- Header -->
+  <div class="text-center mb-8">
+    <h1 class="text-3xl font-bold text-gray-900 mb-2">Post Your Project</h1>
+    <p class="text-gray-600">Find the perfect full-stack developer for your business needs</p>
+  </div>
+
+  <!-- Form -->
+  <form (ngSubmit)="onSubmit()" class="bg-white border border-gray-200 rounded-lg p-8">
+    <!-- Project Title -->
+    <div class="mb-6">
+      <label class="block text-sm font-medium text-gray-700 mb-2">Project Title *</label>
+      <input 
+        type="text" 
+        [(ngModel)]="jobData.title"
+        name="title"
+        placeholder="e.g., Complete E-commerce Platform"
+        class="w-full px-4 py-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none"
+        required>
+    </div>
+
+    <!-- Company & Logo Row -->
+    <div class="grid md:grid-cols-2 gap-6 mb-6">
+      <div>
+        <label class="block text-sm font-medium text-gray-700 mb-2">Company Name *</label>
+        <input 
+          type="text" 
+          [(ngModel)]="jobData.company"
+          name="company"
+          placeholder="Your company name"
+          class="w-full px-4 py-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none"
+          required>
+      </div>
+      <div>
+        <label class="block text-sm font-medium text-gray-700 mb-2">Company Logo</label>
+        <input 
+          type="file" 
+          (change)="onLogoChange($event)"
+          accept="image/*"
+          class="w-full px-4 py-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100">
+      </div>
+    </div>
+
+    <!-- Budget Row -->
+    <div class="mb-6">
+      <label class="block text-sm font-medium text-gray-700 mb-2">Budget Range *</label>
+      <div class="flex gap-2">
+        <select 
+          [(ngModel)]="jobData.currency"
+          name="currency"
+          class="px-3 py-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none">
+          <option *ngFor="let curr of currencyOptions" [value]="curr.value">{{curr.label}}</option>
+        </select>
+        <input 
+          type="text" 
+          [(ngModel)]="jobData.budget"
+          name="budget"
+          placeholder="15k - 25k"
+          class="flex-1 px-4 py-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none"
+          required>
+      </div>
+    </div>
+
+    <!-- Location & Type Row -->
+    <div class="grid md:grid-cols-2 gap-6 mb-6">
+      <div>
+        <label class="block text-sm font-medium text-gray-700 mb-2">Location</label>
+        <select 
+          [(ngModel)]="jobData.location"
+          name="location"
+          class="w-full px-4 py-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none">
+          <option value="Remote">Remote</option>
+          <option value="On-site">On-site</option>
+          <option value="Hybrid">Hybrid</option>
+        </select>
+      </div>
+      <div>
+        <label class="block text-sm font-medium text-gray-700 mb-2">Project Type</label>
+        <select 
+          [(ngModel)]="jobData.type"
+          name="type"
+          class="w-full px-4 py-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none">
+          <option value="Project">Project</option>
+          <option value="Contract">Contract</option>
+          <option value="Part-time">Part-time</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- Tech Stack -->
+    <div class="mb-6">
+      <label class="block text-sm font-medium text-gray-700 mb-3">Required Tech Stack</label>
+      <div class="flex flex-wrap gap-2">
+        <button 
+          *ngFor="let tech of techOptions"
+          type="button"
+          (click)="toggleTech(tech)"
+          [class]="isTechSelected(tech) ? 
+            'px-3 py-2 bg-blue-600 text-white text-sm rounded-full border border-blue-600 hover:bg-blue-700' : 
+            'px-3 py-2 bg-white text-gray-700 text-sm rounded-full border border-gray-300 hover:border-gray-400'">
+          {{tech}}
+        </button>
+      </div>
+    </div>
+
+    <!-- Description -->
+    <div class="mb-6">
+      <label class="block text-sm font-medium text-gray-700 mb-2">Project Description *</label>
+      <textarea 
+        [(ngModel)]="jobData.description"
+        name="description"
+        rows="6"
+        placeholder="Describe your project requirements, goals, and what you're looking to build..."
+        class="w-full px-4 py-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none resize-none"
+        required></textarea>
+    </div>
+
+    <!-- Requirements -->
+    <div class="mb-8">
+      <label class="block text-sm font-medium text-gray-700 mb-2">Developer Requirements</label>
+      <textarea 
+        [(ngModel)]="jobData.requirements"
+        name="requirements"
+        rows="4"
+        placeholder="List specific skills, experience level, or qualifications you're looking for..."
+        class="w-full px-4 py-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none resize-none"></textarea>
+    </div>
+
+    <!-- Submit Button -->
+    <div class="flex justify-end">
+      <button 
+        type="submit"
+        class="bg-blue-600 text-white px-8 py-3 rounded-md hover:bg-blue-700 transition-colors font-medium">
+        Post Project
+      </button>
+    </div>
+  </form>
+</div>

@@ -1,13 +1,22 @@
 <div class="max-w-6xl mx-auto px-6 py-8">
   <!-- Hero Section -->
   <div class="text-center mb-12">
-    <h1 class="text-4xl font-bold text-gray-900 mb-4">Full Stack Developers for SMEs</h1>
+    <h1 class="text-4xl font-bold text-gray-900 mb-4 flex items-center justify-center gap-2">
+      Full Stack Developers for SMBs
+      <div class="relative group">
+        <i class="pi pi-info-circle text-gray-400 text-lg cursor-help"></i>
+        <div class="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 px-3 py-2 bg-gray-800 text-white text-sm rounded-lg opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none whitespace-nowrap">
+          Small and Medium Businesses
+        </div>
+      </div>
+    </h1>
     <p class="text-xl text-gray-600">Complete solutions. One developer. Direct contact.</p>
   </div>
 
   <!-- Developer Profiles Grid -->
   <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-    <div *ngFor="let dev of developers" class="bg-white rounded-lg border border-gray-200 p-6 hover:shadow-lg transition-shadow">
+    <div *ngFor="let dev of developers"
+      class="bg-white rounded-lg border border-gray-200 p-6 hover:shadow-lg transition-shadow">
       <!-- Avatar & Name -->
       <div class="flex items-center mb-4">
         <img [src]="dev.avatar" [alt]="dev.name" class="w-12 h-12 rounded-full mr-4">
@@ -43,7 +52,8 @@
       </div>
 
       <!-- CTA Button -->
-      <button (click)="viewProfile(dev.id)" class="w-full cursor-pointer bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 transition-colors">
+      <button (click)="viewProfile(dev.id)"
+        class="w-full cursor-pointer bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 transition-colors">
         Hire
       </button>
     </div>
