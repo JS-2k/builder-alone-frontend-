@@ -8,6 +8,7 @@ import { ProfileOverview } from './components/profile-overview/profile-overview'
 import { CreateJobpost } from './components/create-jobpost/create-jobpost';
 import { ProfileLaunch } from './components/profile-launch/profile-launch';
 import { Message } from './components/message/message';
+import { Feedback } from './components/feedback/feedback';
 import { Login } from './Auth/login/login';
 import { Signup } from './Auth/signup/signup';
 
@@ -21,6 +22,7 @@ export const routes: Routes = [
   { path: 'create-jobpost', component: CreateJobpost, title: 'Post a Job - Builder Alone' },
   { path: 'create-profile', component: ProfileLaunch, title: 'Launch Your Profile - Builder Alone' },
   { path: 'messages', component: Message, title: 'Messages - Builder Alone' },
+  { path: 'feedback', component: Feedback, title: 'Feedback - Builder Alone' },
   { path: 'login', component: Login, title: 'Sign In - Builder Alone' },
   { path: 'signup', component: Signup, title: 'Sign Up - Builder Alone' }
 ];

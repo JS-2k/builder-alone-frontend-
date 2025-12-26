@@ -145,6 +145,11 @@ export class Home implements OnInit, OnDestroy {
   viewAllProfiles() {
     this.router.navigate(['/profiles']);
   }
+  viewAllProjects()
+  {
+        this.router.navigate(['/jobs']);
+
+  }
 
   launchProfile() {
     this.router.navigate(['/create-profile']);

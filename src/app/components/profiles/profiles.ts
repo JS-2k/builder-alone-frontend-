@@ -16,7 +16,7 @@ export class Profiles {
     search: '',
     experience: '',
     technology: '',
-    availability: ''
+    hourlyRate: ''
   };
 
   developers = [
@@ -27,6 +27,8 @@ export class Profiles {
       stack: ['React', 'Node.js', 'PostgreSQL', 'AWS'],
       experience: '5+ years',
       availability: 'Available',
+      hourlyRate: '$75/hr',
+      hourlyRateValue: 75,
       avatar: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop&crop=face',
       specialty: 'End-to-end web applications'
     },
@@ -37,6 +39,8 @@ export class Profiles {
       stack: ['Vue.js', 'Python', 'MongoDB', 'Docker'],
       experience: '4+ years',
       availability: 'Available',
+      hourlyRate: '$65/hr',
+      hourlyRateValue: 65,
       avatar: 'https://images.unsplash.com/photo-1494790108755-2616b612b786?w=150&h=150&fit=crop&crop=face',
       specialty: 'Complete business solutions'
     },
@@ -47,6 +51,8 @@ export class Profiles {
       stack: ['Angular', 'Java', 'MySQL', 'GCP'],
       experience: '6+ years',
       availability: 'Available',
+      hourlyRate: '$95/hr',
+      hourlyRateValue: 95,
       avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face',
       specialty: 'Enterprise web platforms'
     }
@@ -60,9 +66,27 @@ export class Profiles {
       
       const matchesExperience = !this.filters.experience || dev.experience === this.filters.experience;
       const matchesTechnology = !this.filters.technology || dev.stack.includes(this.filters.technology);
-      const matchesAvailability = !this.filters.availability || dev.availability === this.filters.availability;
       
-      return matchesSearch && matchesExperience && matchesTechnology && matchesAvailability;
+      let matchesHourlyRate = true;
+      if (this.filters.hourlyRate) {
+        const rate = dev.hourlyRateValue;
+        switch (this.filters.hourlyRate) {
+          case '0-50':
+            matchesHourlyRate = rate <= 50;
+            break;
+          case '50-100':
+            matchesHourlyRate = rate > 50 && rate <= 100;
+            break;
+          case '100-150':
+            matchesHourlyRate = rate > 100 && rate <= 150;
+            break;
+          case '150+':
+            matchesHourlyRate = rate > 150;
+            break;
+        }
+      }
+      
+      return matchesSearch && matchesExperience && matchesTechnology && matchesHourlyRate;
     });
   }
 
@@ -71,7 +95,7 @@ export class Profiles {
       search: '',
       experience: '',
       technology: '',
-      availability: ''
+      hourlyRate: ''
     };
   }
 

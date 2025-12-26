@@ -36,13 +36,15 @@
         </select>
       </div>
       
-      <!-- Availability Filter -->
+      <!-- Hourly Rate Filter -->
       <div>
-        <label class="block text-sm font-medium text-gray-700 mb-2">Availability</label>
-        <select [(ngModel)]="filters.availability" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm">
-          <option value="">All Status</option>
-          <option value="Available">Available</option>
-          <option value="Busy">Busy</option>
+        <label class="block text-sm font-medium text-gray-700 mb-2">Hourly Rate</label>
+        <select [(ngModel)]="filters.hourlyRate" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm">
+          <option value="">All Rates</option>
+          <option value="0-50">$0 - $50/hr</option>
+          <option value="50-100">$50 - $100/hr</option>
+          <option value="100-150">$100 - $150/hr</option>
+          <option value="150+">$150+/hr</option>
         </select>
       </div>
     </div>
@@ -86,6 +88,10 @@
         <div class="flex justify-between text-sm">
           <span class="text-gray-500">Experience:</span>
           <span class="text-gray-900">{{dev.experience}}</span>
+        </div>
+        <div class="flex justify-between text-sm">
+          <span class="text-gray-500">Hourly Rate:</span>
+          <span class="text-green-600 font-medium">{{dev.hourlyRate}}</span>
         </div>
 
       </div>
