@@ -1,0 +1,92 @@
+<div class="max-w-7xl mx-auto px-6 py-8">
+  <!-- Hero Section -->
+  <div class="text-center mb-12">
+    <h1 class="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 mb-4 flex flex-col sm:flex-row items-center justify-center gap-2">
+      <span class="animated-text text-center">{{currentService}}</span>
+      <span>for SMBs</span>  
+      <div class="relative group">
+        <i class="pi pi-info-circle text-gray-400 text-lg cursor-help"></i>
+        <div class="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 px-3 py-2 bg-gray-800 text-white text-sm rounded-lg opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none whitespace-nowrap">
+          Small and Medium Businesses
+        </div>
+      </div>
+    </h1>
+    <p class="text-xl text-gray-600 mb-6">Complete solutions. One builder. Direct contact.</p>
+    <div class="flex flex-col sm:flex-row gap-4 justify-center">
+      <button (click)="launchProfile()" class="bg-green-600 text-white px-6 py-3 rounded-lg hover:bg-green-700 transition-colors font-medium">
+        Launch Your Profile
+      </button>
+      <button (click)="postProject()" class="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors font-medium">
+        Post a Project
+      </button>
+    </div>
+  </div>
+
+  <!-- Two Column Layout -->
+  <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+    <!-- Left Side - Featured Profiles -->
+    <div class="bg-gray-50 rounded-xl p-6">
+      <div class="flex justify-between items-center mb-6">
+        <h2 class="text-2xl font-bold text-gray-900">Featured Profiles</h2>
+        <button (click)="viewAllProfiles()" class="text-blue-600 hover:text-blue-700 text-sm font-medium">
+          View All →
+        </button>
+      </div>
+      
+      <!-- Auto-scrolling Profiles Container -->
+      <div class="relative overflow-hidden h-96">
+        <div class="absolute inset-0 flex flex-col gap-4 animate-scroll-up">
+          <div *ngFor="let dev of allProfiles" class="bg-white rounded-lg border border-gray-200 p-4 flex-shrink-0">
+            <div class="flex items-center mb-3">
+              <img [src]="dev.avatar" [alt]="dev.name" class="w-10 h-10 rounded-full mr-3">
+              <div>
+                <h3 class="font-semibold text-gray-900 text-sm">{{dev.name}}</h3>
+                <p class="text-gray-600 text-xs">{{dev.role}}</p>
+              </div>
+            </div>
+            <div class="flex flex-wrap gap-1 mb-2">
+              <span *ngFor="let tech of dev.stack.slice(0,3)" class="px-2 py-1 bg-blue-100 text-blue-800 text-xs rounded-full">
+                {{tech}}
+              </span>
+            </div>
+            <p class="text-xs text-gray-500">{{dev.experience}} • {{dev.availability}}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right Side - Projects -->
+    <div class="bg-gray-50 rounded-xl p-6">
+      <div class="flex justify-between items-center mb-6">
+        <h2 class="text-2xl font-bold text-gray-900">Latest Projects</h2>
+        <button class="text-blue-600 hover:text-blue-700 text-sm font-medium">
+          View All →
+        </button>
+      </div>
+      
+      <!-- Auto-scrolling Projects Container -->
+      <div class="relative overflow-hidden h-96">
+        <div class="absolute inset-0 flex flex-col gap-4 animate-scroll-down">
+          <div *ngFor="let project of allProjects" class="bg-white rounded-lg border border-gray-200 p-4 flex-shrink-0">
+            <h3 class="font-semibold text-gray-900 mb-2 text-sm">{{project.title}}</h3>
+            <p class="text-gray-600 text-xs mb-3 line-clamp-2">{{project.description}}</p>
+            <div class="space-y-1">
+              <div class="flex justify-between text-xs">
+                <span class="text-gray-500">Budget:</span>
+                <span class="text-gray-900 font-medium">{{project.budget}}</span>
+              </div>
+              <div class="flex justify-between text-xs">
+                <span class="text-gray-500">Deadline:</span>
+                <span class="text-gray-900">{{project.deadline}}</span>
+              </div>
+              <div class="flex justify-between text-xs">
+                <span class="text-gray-500">Skills:</span>
+                <span class="text-blue-600">{{project.skills}}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

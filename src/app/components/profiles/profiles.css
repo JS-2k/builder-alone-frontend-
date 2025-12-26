@@ -1,1 +1,7 @@
-/* Using Tailwind CSS classes */
+.animated-text {
+  transition: opacity 0.5s ease-in-out;
+}
+
+.animated-text.fade-out {
+  opacity: 0;
+}

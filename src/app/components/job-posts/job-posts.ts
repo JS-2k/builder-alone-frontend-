@@ -52,6 +52,6 @@ export class JobPosts {
   }
 
   createJob() {
-    this.router.navigate(['/create-job']);
+    this.router.navigate(['/create-jobpost']);
   }
 }

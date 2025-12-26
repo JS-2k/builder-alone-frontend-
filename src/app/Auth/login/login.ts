@@ -21,4 +21,8 @@ export class Login {
   onLogin() {
     console.log('Login:', { email: this.email, password: this.password });
   }
+
+  onGoogleLogin() {
+    console.log('Google login clicked');
+  }
 }
