@@ -1,15 +1,23 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-profiles',
-  imports: [CommonModule],
+  imports: [CommonModule, FormsModule],
   templateUrl: './profiles.html',
   styleUrl: './profiles.css',
 })
 export class Profiles {
   constructor(private router: Router) {}
+
+  filters = {
+    search: '',
+    experience: '',
+    technology: '',
+    availability: ''
+  };
 
   developers = [
     {
@@ -43,6 +51,29 @@ export class Profiles {
       specialty: 'Enterprise web platforms'
     }
   ];
+
+  get filteredDevelopers() {
+    return this.developers.filter(dev => {
+      const matchesSearch = !this.filters.search || 
+        dev.name.toLowerCase().includes(this.filters.search.toLowerCase()) ||
+        dev.stack.some(tech => tech.toLowerCase().includes(this.filters.search.toLowerCase()));
+      
+      const matchesExperience = !this.filters.experience || dev.experience === this.filters.experience;
+      const matchesTechnology = !this.filters.technology || dev.stack.includes(this.filters.technology);
+      const matchesAvailability = !this.filters.availability || dev.availability === this.filters.availability;
+      
+      return matchesSearch && matchesExperience && matchesTechnology && matchesAvailability;
+    });
+  }
+
+  clearFilters() {
+    this.filters = {
+      search: '',
+      experience: '',
+      technology: '',
+      availability: ''
+    };
+  }
 
   viewProfile(devId: number) {
     this.router.navigate(['/developer', devId]);
